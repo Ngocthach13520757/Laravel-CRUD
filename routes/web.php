@@ -14,4 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/pdf/{id}','PassportController@pdfDownload');
 Route::resource('passports','PassportController');

@@ -15,13 +15,16 @@
         @endif  
         <table class="table table-striped">
             <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Passport Office</th>
-                <th colspan="3">Action</th>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Passport Office</th>
+                    <th colspan="4">Action</th>
+                </tr>
+                
             </thead>
             <tbody>
                 @foreach($passports as $passport)
@@ -40,6 +43,9 @@
                         </td>
                         <td>
                             <a href="{{action('PassportController@create')}}" class="btn btn-success">Create</a>
+                        </td>
+                        <td>
+                            <a href="{{url('pdf',$passport['id'])}}" class="btn btn-warning">PDF</a>
                         </td>
                         <td>
                             <form action="{{action('PassportController@destroy', $passport['id'])}}" method="POST">

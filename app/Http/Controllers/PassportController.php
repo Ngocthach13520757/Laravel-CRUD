@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Passport;
+use PDF;
 class PassportController extends Controller
 {
     /**
@@ -106,5 +107,10 @@ class PassportController extends Controller
         $passport = Passport::find($id);
         $passport->delete();
         return redirect('passports')->with('Success','Has been deleted successfully');
+    }
+    public function pdfDownload($id){
+        $passport = Passport::find($id);
+        $pdf = PDF::loadView('pdf',compact('passport'));
+        return $pdf->download('passport.pdf');
     }
 }
